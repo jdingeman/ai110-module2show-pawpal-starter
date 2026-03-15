@@ -4,6 +4,18 @@
 
 **a. Initial design**
 
+Three core actions that a user should be able to perform are:
+
+1. Add a pet profile to store information on their pet
+2. Request a daily plan of activties for their pet
+3. Be able to edit tasks and activities as needed to match their pets needs.
+
+Classes needed for this application are the owner, a pet, an activity, and a schedule.
+An owner should have a first name, last name, and an email or a phone number. An owner (the user) can set up their profile and their pet(s) profile(s), edit tasks and schedules.
+A pet should have a name, a birthday, a type, and a breed. An owner can have multiple pets.
+An activity should have a name/description and a duration.
+A schedule should be able to hold several activities and detect scheduling conflicts.
+
 - Briefly describe your initial UML design.
 - What classes did you include, and what responsibilities did you assign to each?
 
