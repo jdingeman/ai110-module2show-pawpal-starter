@@ -42,7 +42,7 @@ pip install -r requirements.txt
 6. Connect your logic to the Streamlit UI in `app.py`.
 7. Refine UML so it matches what you actually built.
 
-# TD Submission: Justin Dingeman
+# TF Submission: Justin Dingeman
 
 1. The core concept students needed to understand
    Students will need to understand how to set up a virtual environment, run a streamlit app, and be able to use AI as a collaborator for drafting all the way to app completion.
