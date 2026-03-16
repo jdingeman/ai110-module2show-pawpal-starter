@@ -145,7 +145,16 @@ st.subheader("Build Schedule")
 schedule_date = st.date_input("View schedule for date", value=date.today(), key="schedule_date")
 
 if st.button("Generate schedule"):
-    day_tasks = scheduler.get_tasks_for_date(pet, schedule_date)
+    st.session_state["schedule_results"] = scheduler.get_tasks_for_date(pet, schedule_date)
+    st.session_state["schedule_for_pet"] = pet.name
+    st.session_state["schedule_for_date"] = schedule_date
+
+if (
+    st.session_state.get("schedule_for_pet") == pet.name
+    and st.session_state.get("schedule_for_date") == schedule_date
+    and "schedule_results" in st.session_state
+):
+    day_tasks = [t for t in st.session_state["schedule_results"] if not t.is_complete]
     if day_tasks:
         st.success(f"Schedule for {pet.name} on {schedule_date.strftime('%A, %B %d')}:")
         st.table([

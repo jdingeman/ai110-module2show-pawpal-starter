@@ -53,6 +53,8 @@ Beginning Phase 1 changes:
 - What constraints does your scheduler consider (for example: time, priority, preferences)?
 - How did you decide which constraints mattered most?
 
+Constraints considered include just time at the moment since those are needed for an MVP considering what the app is for.
+
 **b. Tradeoffs**
 
 - Describe one tradeoff your scheduler makes.
