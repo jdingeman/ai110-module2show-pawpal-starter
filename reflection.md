@@ -4,6 +4,9 @@
 
 **a. Initial design**
 
+- Briefly describe your initial UML design.
+- What classes did you include, and what responsibilities did you assign to each?
+
 Three core actions that a user should be able to perform are:
 
 1. Add a pet profile to store information on their pet
@@ -16,13 +19,30 @@ A pet should have a name, a birthday, a type, and a breed. An owner can have mul
 An activity should have a name/description and a duration.
 A schedule should be able to hold several activities and detect scheduling conflicts.
 
-- Briefly describe your initial UML design.
-- What classes did you include, and what responsibilities did you assign to each?
-
 **b. Design changes**
 
 - Did your design change during implementation?
 - If yes, describe at least one change and why you made it.
+
+Several changes were applied:
+
+1. Date was added to Schedule so that schedules can be distinguished between days, such as if Monday's schedule is different from Tuesday's.
+2. `detect_conflicts()` in Schedule was updated so that it returns tuples of activties that conflict with each other, rather than just a list of activities that have _some_ conflict with others.
+3. `start_time` was added to Activity since `duration` alone does not provide sufficient information for the schedule
+4. `schedule` was added to Pet so that a pet has its own schedule, otherwise there was no relationship.
+5. `__post_init__()` was added to Owner so that either a phone number or email must be provided, otherwise, it would've accepted neither being added.
+6. A to-do stub was added to `setup_pet_profile()` in Owner to ensure the function adds the Pet to the Owner and link them
+7. `edit_schedule()` in Owner was changed so that the schedule is linked with the pet, otherwise the attribute is ambiguous.
+
+Beginning Phase 1 changes:
+
+1. Enum of Frequency was added
+2. `frequency` and `is_complete` added to Activity
+3. `end_time()` added to Activity to calculate the end time based on `duration` and `start_time`
+4. `overlaps_with(other)` added to check whether an activity conflicts with the `other` activity passed in
+5. `tasks` replaced `schedule` in Pet since the Schedule class becomes Scheduler and acts as a service rather than a dataclass
+6. Removed task-management methods from Owner since they will be handled by Scheduler
+7. Replaced Schedule with Scheduler and added task-management methods for retrieval, editing and conflict detection
 
 ---
 
